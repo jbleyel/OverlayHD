@@ -808,7 +808,7 @@ class OverlayHDThemeManager(Screen, HelpableScreen):
 			self["themes"].updateList(self.listThemes())
 			self["description"].setText(_("Theme '%s' created.") % themeName)
 
-	def updateTheme(self, themeName=None): # Fis me!
+	def updateTheme(self, themeName=None):  # Fis me!
 		if self["themes"].count():
 			themeName = self["themes"].getCurrent()[0]
 			print("[OverlayHD] Updating theme '%s'." % themeName)
