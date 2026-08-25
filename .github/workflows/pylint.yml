@@ -27,5 +27,5 @@ jobs:
 
       - name: Run Pylint
         run: |
-          cd usr/lib/enigma2/python/Plugins/OverlayHD
+          cd usr/lib/enigma2/python/plugins/OverlayHD
           pylint --exit-zero $(git ls-files '*.py')

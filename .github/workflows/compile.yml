@@ -25,7 +25,7 @@ jobs:
 
       - name: Build plugins, python ${{ matrix.python }}
         run: |
-          cd usr/lib/enigma2/python/Plugins/OverlayHD
+          cd usr/lib/enigma2/python/plugins/OverlayHD
           python -m compileall .
 
       - name: Compile po files
