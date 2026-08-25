@@ -61,7 +61,329 @@
 		<widget name="list" position="590,170" size="610,415" backgroundColor="MenuBackground" backgroundColorSelected="MenuSelected" foregroundColor="MenuText" foregroundColorSelected="MenuTextSelected" itemHeight="50" transparent="0" />
 	</screen>
 
-<!-- FAV - TV Channel Selection -->
+<!-- FAV - Channel Selection TV and Radio -->
+
+	<screen name="ServiceListPanel" title="Service List" flags="wfNoBorder">
+		<widget name="list" position="0,0" size="640,550" fallbackColor="SaddleBrown" fallbackColorSelected="Maroon" pseudoColor="Teal" pseudoColorSelected="DullGreen" recordColor="OrangeRed" recordColorSelected="Red" streamColor="Purple" streamColorSelected="Pink">backgroundColorMarked="Mustard" backgroundColorMarkedSelected="Orange" foregroundColorMarked="Silver" foregroundColorMarkedSelected="Gainsboro" markedColor="Navy" markedColorSelected="DullBlue"
+			<templates>
+				<template component="serviceList" name="Vertical List" fonts="FAVLCNFont;20,FAVServiceFont;20,FAVEventFont;20">
+					<mode name="services" itemHeight="25">
+						<panel position="10,0" size="e-25,25" layout="horizontal" spacing="10">
+							<pixmap index="Picon" position="left,1" size="38,23" alpha="blend" scale="centerScaled"/>
+							<text index="Number" position="left" size="30,25" font="0" foregroundColor="FAVLCN" horizontalAlignment="right" verticalAlignment="center" />
+							<pixmap index="IsInBouquetImage" position="left,7" size="11,11" alpha="blend" scale="centerScaled"/>
+							<text index="ServiceName" position="left,0" size="160,25" font="1" foregroundColor="FAVService" verticalAlignment="center" wrap="noWrap" /><!-- autoFit="Title1" -->
+							<text index="Title1" position="left,0" size="276,25" font="2" autoGrow="1" foregroundColor="FAVTitle" verticalAlignment="center" wrap="noWrap" />
+							<progress index="Progress" position="right,9" size="50,7" backgroundColor="FAVProgressBackground" borderColor="FAVProgressBorder" borderWidth="1" foregroundColor="FAVProgress" />
+						</panel>
+					</mode>
+					<mode name="bouquets" itemHeight="25">
+						<panel position="10,0" size="e-25,25" layout="horizontal" spacing="10">
+							<pixmap index="FolderImage" position="0,0" size="25,25" alpha="blend" scale="centerScaled"/>
+							<text index="FolderName" position="35,0" size="e-35,25" foregroundColor="FAVFolder" font="1" verticalAlignment="center" wrap="noWrap" />
+							<pixmap index="MarkerImage" position="0,2" size="21,22" alpha="blend" scale="centerScaled"/>
+							<text index="MarkerName" position="30,0" size="e-30,25" foregroundColor="FAVMarker" font="1" verticalAlignment="center" wrap="noWrap" />
+							<text index="Number" position="left" size="30,25" font="0" foregroundColor="FAVLCN" horizontalAlignment="right" verticalAlignment="center" />
+							<pixmap index="Picon" position="left,1" size="38,23" alpha="blend" scale="centerScaled"/>
+							<pixmap index="CryptoImage" position="left,3" size="20,20" alpha="blend" scale="centerScaled"/>
+							<pixmap index="ServiceTypeImage" position="left,1" size="22,22" alpha="blend" scale="centerScaled"/>
+							<pixmap index="RecordingIndicator" position="left,1" size="22,22" alpha="blend" scale="centerScaled"/>
+							<text index="ServiceName" position="left" size="160,25" font="1" foregroundColor="FAVService" verticalAlignment="center" wrap="noWrap" /><!-- autoFit="Title1" -->
+							<text index="Title1" position="left" size="297,25" font="2" autoGrow="1" foregroundColor="FAVTitle" verticalAlignment="center" wrap="noWrap" />
+							<progress index="Progress" position="right,9" size="50,7" backgroundColor="FAVProgressBackground" borderColor="FAVProgressBorder" borderWidth="1" foregroundColor="FAVProgress" />
+						</panel>
+					</mode>
+					<mode name="other" itemHeight="25">
+						<panel position="10,0" size="e-25,25" layout="horizontal" spacing="10">
+							<pixmap index="FolderImage" position="left,1" size="25,25" alpha="blend" scale="centerScaled"/>
+							<text index="FolderName" position="left" size="e-35,25" foregroundColor="FAVFolder" font="1" verticalAlignment="center" wrap="noWrap" />
+							<pixmap index="MarkerImage" position="left,2" size="21,22" alpha="blend" scale="centerScaled"/>
+							<text index="MarkerName" position="left" size="e-30,25" foregroundColor="FAVMarker" font="1" verticalAlignment="center" wrap="noWrap" />
+							<text index="EntryName" position="left" size="526,25" font="1" verticalAlignment="center" wrap="noWrap" />
+						</panel>
+					</mode>
+				</template>
+				<template component="serviceList" name="Newspaper Grid" fonts="FAVLCNFont;20,FAVServiceFont;20,FAVEventFont;20,FAVEventFont;16">
+					<mode name="services" itemHeight="25">
+						<panel position="10,0" size="e-25,25" layout="horizontal" spacing="10">
+							<pixmap index="Picon" position="left,1" size="38,23" alpha="blend" scale="centerScaled"/>
+							<text index="Number" position="left" size="30,25" font="0" foregroundColor="FAVLCN" horizontalAlignment="right" verticalAlignment="center" />
+							<pixmap index="IsInBouquetImage" position="left,7" size="11,11" alpha="blend" scale="centerScaled"/>
+							<text index="ServiceName" position="left,0" size="160,25" font="1" foregroundColor="FAVService" verticalAlignment="center" wrap="noWrap" /><!-- autoFit="Title1" -->
+							<text index="Title1" position="left,0" size="276,25" font="2" autoGrow="1" foregroundColor="FAVTitle" verticalAlignment="center" wrap="noWrap" />
+							<progress index="Progress" position="right,9" size="50,7" backgroundColor="FAVProgressBackground" borderColor="FAVProgressBorder" borderWidth="1" foregroundColor="FAVProgress" />
+						</panel>
+					</mode>
+					<mode name="bouquets" itemWidth="155" itemHeight="132" orientation="grid">
+						<panel position="5,5" size="e-10,35" layout="horizontal" spacing="5">
+							<pixmap index="Picon" position="left,0" size="50,30" alpha="blend" scale="centerScaled" />
+							<pixmap index="MarkerImage" position="left,0" size="21,22" alpha="blend" scale="centerScaled" />
+							<pixmap index="FolderImage" position="left,0" size="25,25" alpha="blend" scale="centerScaled" />
+							<text index="Number" position="right" size="30,25" foregroundColor="FAVLCN" font="0" horizontalAlignment="right" verticalAlignment="center" />
+							<pixmap index="CryptoImage" position="right,3" size="20,20" alpha="blend" scale="centerScaled" />
+							<pixmap index="ServiceTypeImage" position="right,2" size="22,22" alpha="blend" scale="centerScaled" />
+							<pixmap index="RecordingIndicator" position="right,2" size="22,22" alpha="blend" scale="centerScaled" />
+						</panel>
+						<text index="ServiceName" position="5,35" size="145,25" font="1" foregroundColor="FAVService" verticalAlignment="center" wrap="noWrap" />
+						<text index="MarkerName" position="5,30" size="145,100" font="1" foregroundColor="FAVMarker" horizontalAlignment="center" verticalAlignment="center" wrap="wrap"/> 
+						<panel position="5,62" size="145,65" layout="vertical" spacing="0">
+							<progress index="Progress" position="top" size="145,5" backgroundColor="FAVProgressBackground" borderColor="FAVProgressBorder" borderWidth="1" foregroundColor="FAVProgress" />
+							<text index="Title1" position="top" size="145,20" font="3" foregroundColor="FAVTitle" verticalAlignment="center" wrap="noWrap" />
+							<text index="Title2" position="top" size="145,20" font="3" foregroundColor="FAVTitle" verticalAlignment="center" wrap="noWrap" />
+							<text index="Title3" position="top" size="145,20" font="3" foregroundColor="FAVTitle" verticalAlignment="center" wrap="noWrap" />
+						</panel>
+					</mode>
+					<mode name="other" itemHeight="25">
+						<panel position="10,0" size="e-25,25" layout="horizontal" spacing="10">
+							<pixmap index="FolderImage" position="left,1" size="25,25" alpha="blend" scale="centerScaled"/>
+							<text index="FolderName" position="left" size="e-35,25" foregroundColor="FAVFolder" font="1" verticalAlignment="center" wrap="noWrap" />
+							<pixmap index="MarkerImage" position="left,2" size="21,22" alpha="blend" scale="centerScaled"/>
+							<text index="MarkerName" position="left" size="e-30,25" foregroundColor="FAVMarker" font="1" verticalAlignment="center" wrap="noWrap" />
+							<text index="EntryName" position="left" size="526,25" font="1" verticalAlignment="center" wrap="noWrap" />
+						</panel>
+					</mode>
+				</template>
+			</templates>
+		</widget>
+		<widget name="chosenletter" position="0,0" size="640,550" font="FAVServiceFont;100" conditional="chosenletter" foregroundColor="FindCharacter" horizontalAlignment="center" transparent="1" verticalAlignment="center" zPosition="+1" />
+	</screen>
+
+	<screen name="ChannelSelectionLegacy" title="Channel Selection" position="fill" base="ChannelSelection" label="Skin Based Classic" flags="wfNoBorder">
+		<panel name="ScreenTemplate" />
+		<eLabel position="698,66" size="2,595" backgroundColor="Pinstripe" />
+		<eLabel position="698,558" size="532,2" backgroundColor="Pinstripe" />
+		<panel position="50,80" size="640,550">
+			<panel name="ServiceListPanel" />
+		</panel>
+		<widget source="ServiceEvent" render="Picon" position="710,80" size="100,60" alphatest="blend" borderColor="grey" borderWidth="1" transparent="1">
+			<convert type="ServiceName2">Reference</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="820,80" size="320,25" backgroundColor="InfoBackground" font="InfoEventFont;20" foregroundColor="InfoChannel" transparent="1" valign="top">
+			<convert type="ServiceName2">Name</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="1150,80" size="80,25" backgroundColor="InfoBackground" font="InfoEventFont;20" foregroundColor="InfoLCN" halign="right" transparent="1" valign="top">
+			<convert type="ServiceName2">Number</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="820,105" size="290,20" backgroundColor="InfoBackground" font="InfoOtherFont;16" foregroundColor="InfoBroadcaster" transparent="1">
+			<convert type="ServiceName2">Provider</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="1120,105" size="110,20" backgroundColor="InfoBackground" font="InfoOtherFont;16" foregroundColor="InfoBroadcaster" halign="right" transparent="1">
+			<convert type="ServiceName2">%F</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Progress" position="820,134" size="410,6" backgroundColor="InfoProgressBackground" borderColor="InfoProgressBorder" borderWidth="1" foregroundColor="InfoProgressColor" transparent="0">
+			<convert type="EventInfo">Progress</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="710,150" size="520,25" backgroundColor="InfoBackground" font="InfoEventFont;20" foregroundColor="InfoProgramNow" transparent="1">
+			<convert type="EventInfo">NowName</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="730,175" size="250,25" backgroundColor="InfoBackground" font="InfoTimeFont;20" foregroundColor="InfoTimesNow" noWrap="1" transparent="1">
+			<convert type="EventInfo">Times</convert>
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="980,175" size="250,25" backgroundColor="InfoBackground" font="InfoTimeFont;20" foregroundColor="InfoDurationNow" halign="right" noWrap="1" transparent="1">
+			<convert type="EventInfo">Remaining</convert>
+			<convert type="RemainingToText">Default</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="730,205" size="500,215" backgroundColor="InfoBackground" font="InfoDescriptionFont;20" foregroundColor="InfoDetailsNow" halign="block" transparent="1"><!-- size="526,270" -->
+			<convert type="EventInfo">FullDescription,Trimmed,NotSeparated</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Pixmap" position="730,425" size="40,20" alphatest="blend">
+			<convert type="EventInfo">RatingIcon</convert>
+			<convert type="ValueToPixmap">Path</convert>
+		</widget>
+		<!--
+		<widget source="ServiceEvent" render="Label" position="730,425" size="80,25" backgroundColor="InfoBackground" font="InfoOtherFont;20" foregroundColor="InfoRatingNow" transparent="1">
+			<convert type="EventInfo">SmallRating,Trimmed</convert>
+		</widget>
+		-->
+		<widget source="ServiceEvent" render="Label" position="810,425" size="420,25" backgroundColor="InfoBackground" font="InfoOtherFont;20" foregroundColor="InfoGenreNow" halign="right" transparent="1">
+			<convert type="EventInfo">Genre,Trimmed</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="710,450" size="520,25" backgroundColor="InfoBackground" font="InfoEventFont;20" foregroundColor="InfoProgramNext" noWrap="1" transparent="1">
+			<convert type="EventInfo">NextName</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="730,475" size="250,25" backgroundColor="InfoBackground" font="InfoTimeFont;20" foregroundColor="InfoTimesNext" noWrap="1" transparent="1">
+			<convert type="EventInfo">NextTimes</convert>
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="980,475" size="250,25" backgroundColor="InfoBackground" font="InfoTimeFont;20" foregroundColor="InfoDurationNext" halign="right" noWrap="1" transparent="1">
+			<convert type="EventInfo">NextDuration</convert>
+			<convert type="ClockToText">InMinutes</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="710,500" size="520,25" backgroundColor="InfoBackground" font="InfoEventFont;20" foregroundColor="InfoProgramNext" noWrap="1" transparent="1">
+			<convert type="EventInfo">ThirdName</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="730,525" size="250,25" backgroundColor="InfoBackground" font="InfoTimeFont;20" foregroundColor="InfoTimesNext" noWrap="1" transparent="1">
+			<convert type="EventInfo">ThirdTimes</convert>
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="980,525" size="250,25" backgroundColor="InfoBackground" font="InfoTimeFont;20" foregroundColor="InfoDurationNext" halign="right" noWrap="1" transparent="1">
+			<convert type="EventInfo">ThirdDuration</convert>
+			<convert type="ClockToText">InMinutes</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="710,570" size="260,20" backgroundColor="InfoBackground" font="InfoEventFont;15" foregroundColor="InfoChannel" transparent="1">
+			<convert type="ServiceName">NameOnly</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="980,570" size="40,20" backgroundColor="InfoBackground" font="InfoEventFont;15" foregroundColor="InfoLCN" halign="right" transparent="1">
+			<convert type="ServiceName2">Number</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="1030,570" size="200,20" backgroundColor="InfoBackground" font="InfoEventFont;15" foregroundColor="InfoBroadcaster" halign="right" transparent="1">
+			<convert type="ServiceName">Provider</convert>
+		</widget>
+		<panel position="710,595" size="160,20">
+			<panel name="ResolutionPanel" />
+		</panel>
+		<panel position="877,595" size="353,20">
+			<panel name="ChannelFormatPanel" />
+		</panel>
+		<panel position="710,625" size="320,25">
+			<panel name="TunerUsagePanel" />
+		</panel>
+		<panel position="1070,620" size="160,30">
+			<panel name="TunerSignalPanel" />
+		</panel>
+	</screen>
+
+	<screen name="ChannelSelectionLeft" title="Channel Selection" position="fill" base="ChannelSelection" label="Skin Based Slim Left" flags="wfNoBorder">
+		<panel name="ScreenTemplate" />
+		<panel position="50,80" size="640,550">
+			<panel name="ServiceListPanel" />
+		</panel>
+	</screen>
+
+	<screen name="ChannelSelectionRight" title="Channel Selection" position="fill" base="ChannelSelection" label="Skin Based Slim Right" flags="wfNoBorder">
+		<panel name="ScreenTemplate" />
+		<panel position="590,80" size="640,550">
+			<panel name="ServiceListPanel" />
+		</panel>
+	</screen>
+
+	<screen name="ChannelSelectionRadio" title="Channel Selection" position="fill" flags="wfNoBorder">
+		<panel name="ScreenTemplate" />
+		<eLabel position="698,66" size="2,595" backgroundColor="Pinstripe" />
+		<eLabel position="698,558" size="532,2" backgroundColor="Pinstripe" />
+		<!--
+		<widget name="list" position="400,80" size="830,550" backgroundColor="MenuBackground" backgroundColorSelected="MenuSelected" foregroundColor="MenuText" foregroundColorSelected="MenuTextSelected" />
+		-->
+		<widget source="ServiceEvent" render="Picon" position="710,80" size="100,60" alphatest="blend" borderColor="grey" borderWidth="1" transparent="1">
+			<convert type="ServiceName2">Reference</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="820,80" size="320,25" backgroundColor="InfoBackground" font="InfoEventFont;20" foregroundColor="InfoChannel" transparent="1" valign="top">
+			<convert type="ServiceName2">Name</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="1150,80" size="80,25" backgroundColor="InfoBackground" font="InfoEventFont;20" foregroundColor="InfoLCN" halign="right" transparent="1" valign="top">
+			<convert type="ServiceName2">Number</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="820,105" size="290,20" backgroundColor="InfoBackground" font="InfoOtherFont;16" foregroundColor="InfoBroadcaster" transparent="1">
+			<convert type="ServiceName2">Provider</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="1120,105" size="110,20" backgroundColor="InfoBackground" font="InfoOtherFont;16" foregroundColor="InfoBroadcaster" halign="right" transparent="1">
+			<convert type="ServiceName2">%F</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Progress" position="820,134" size="410,6" backgroundColor="InfoProgressBackground" borderColor="InfoProgressBorder" borderWidth="1" foregroundColor="InfoProgressColor" transparent="0">
+			<convert type="EventInfo">Progress</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="710,150" size="520,25" backgroundColor="InfoBackground" font="InfoEventFont;20" foregroundColor="InfoProgramNow" transparent="1">
+			<convert type="EventInfo">NowName</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="730,175" size="250,25" backgroundColor="InfoBackground" font="InfoTimeFont;20" foregroundColor="InfoTimesNow" noWrap="1" transparent="1">
+			<convert type="EventInfo">Times</convert>
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="980,175" size="250,25" backgroundColor="InfoBackground" font="InfoTimeFont;20" foregroundColor="InfoDurationNow" halign="right" noWrap="1" transparent="1">
+			<convert type="EventInfo">Remaining</convert>
+			<convert type="RemainingToText">Default</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="730,205" size="500,215" backgroundColor="InfoBackground" font="InfoDescriptionFont;20" foregroundColor="InfoDetailsNow" halign="block" transparent="1"><!-- size="526,270" -->
+			<convert type="EventInfo">FullDescription,Trimmed,NotSeparated</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Pixmap" position="730,425" size="40,20" alphatest="blend">
+			<convert type="EventInfo">RatingIcon</convert>
+			<convert type="ValueToPixmap">Path</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="810,425" size="420,25" backgroundColor="InfoBackground" font="InfoOtherFont;20" foregroundColor="InfoGenreNow" halign="right" transparent="1">
+			<convert type="EventInfo">Genre,Trimmed</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="710,450" size="520,25" backgroundColor="InfoBackground" font="InfoEventFont;20" foregroundColor="InfoProgramNext" noWrap="1" transparent="1">
+			<convert type="EventInfo">NextName</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="730,475" size="250,25" backgroundColor="InfoBackground" font="InfoTimeFont;20" foregroundColor="InfoTimesNext" noWrap="1" transparent="1">
+			<convert type="EventInfo">NextTimes</convert>
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="980,475" size="250,25" backgroundColor="InfoBackground" font="InfoTimeFont;20" foregroundColor="InfoDurationNext" halign="right" noWrap="1" transparent="1">
+			<convert type="EventInfo">NextDuration</convert>
+			<convert type="ClockToText">InMinutes</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="710,500" size="520,25" backgroundColor="InfoBackground" font="InfoEventFont;20" foregroundColor="InfoProgramNext" noWrap="1" transparent="1">
+			<convert type="EventInfo">ThirdName</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="730,525" size="250,25" backgroundColor="InfoBackground" font="InfoTimeFont;20" foregroundColor="InfoTimesNext" noWrap="1" transparent="1">
+			<convert type="EventInfo">ThirdTimes</convert>
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="ServiceEvent" render="Label" position="980,525" size="250,25" backgroundColor="InfoBackground" font="InfoTimeFont;20" foregroundColor="InfoDurationNext" halign="right" noWrap="1" transparent="1">
+			<convert type="EventInfo">ThirdDuration</convert>
+			<convert type="ClockToText">InMinutes</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="710,570" size="260,20" backgroundColor="InfoBackground" font="InfoEventFont;15" foregroundColor="InfoChannel" transparent="1">
+			<convert type="ServiceName">NameOnly</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="980,570" size="40,20" backgroundColor="InfoBackground" font="InfoEventFont;15" foregroundColor="InfoLCN" halign="right" transparent="1">
+			<convert type="ServiceName2">Number</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="1030,570" size="200,20" backgroundColor="InfoBackground" font="InfoEventFont;15" foregroundColor="InfoBroadcaster" halign="right" transparent="1">
+			<convert type="ServiceName">Provider</convert>
+		</widget>
+		<panel position="50,80" size="640,550">
+			<panel name="ServiceListPanel" />
+		</panel>
+		<panel position="710,595" size="160,20">
+			<panel name="ResolutionPanel" />
+		</panel>
+		<panel position="877,595" size="353,20">
+			<panel name="ChannelFormatPanel" />
+		</panel>
+		<panel position="710,625" size="320,25">
+			<panel name="TunerUsagePanel" />
+		</panel>
+		<panel position="1070,620" size="160,30">
+			<panel name="TunerSignalPanel" />
+		</panel>
+	</screen>
+
+	<!-- This screen is used as an instantiated window within ChannelSelectionRadio. -->
+
+	<screen name="RadioInfoBar" title="Radio Information Bar" position="720,300" size="510,115" flags="wfNoBorder" transparent="1" zPosition="+1">
+		<!--
+		<widget source="session.CurrentService" render="Label" position="720,80" size="830,35" font="Regular;25" noWrap="1" transparent="1">
+			<convert type="ServiceName">Name</convert>
+		</widget>
+		<widget source="session.Event_Now" render="Label" position="720,125" size="830,35" font="Regular;25" noWrap="1" transparent="1">
+			<convert type="EventInfo">Name</convert>
+		</widget>
+		<eLabel position="20,63" size="460,1" backgroundColor="#003366cc" zPosition="2" />
+		<widget source="session.Event_Now" render="Progress" position="720,170" size="830,14" transparent="1" zPosition="1">
+			<convert type="EventInfo">Progress</convert>
+		</widget>
+		<widget source="session.Event_Now" render="Label" position="20,75" size="180,30" font="Regular;26" transparent="1">
+			<convert type="EventInfo">Times</convert>
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		-->
+		<widget source="RdsDecoder" render="Pixmap" pixmap="icons/i_rass.png" position="720,300" size="50,21" alphatest="blend">
+			<convert type="RdsInfo">RasInteractiveAvailable</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="RdsDecoder" render="Label" position="780,300" size="450,100" font="Regular;20" transparent="1">
+			<convert type="RdsInfo">RadioText</convert>
+		</widget>
+		<!--
+		<widget source="session.RecordState" render="Pixmap" pixmap="icons/i_rec.png" position="20,310" size="48,48" alphatest="blend">
+			<convert type="ConditionalShowHide">Blink</convert>
+		</widget>
+		-->
+	</screen>
 
 	<screen name="ChannelSelection" title="Channel Selection" position="fill" flags="wfNoBorder">
 		<panel name="ScreenTemplate" />
@@ -183,8 +505,9 @@
 		<panel name="ScreenTemplateMenu0" />
 	</screen>
 
-<!-- Screen names change for "Simple" mode channel selection -> "SlimChannelSelection", "SimpleChannelSelection", "ChannelSelection" -->
+	<!-- Screen names change for "Simple" mode channel selection -> "SlimChannelSelection", "SimpleChannelSelection", "ChannelSelection" -->
 
+	<!--
 	<screen name="SlimChannelSelection" title="Channel Selection" position="fill" flags="wfNoBorder">
 		<panel name="ScreenTemplate" />
 		<widget name="list" position="400,80" size="830,550" backgroundColor="MenuBackground" backgroundColorMarked="FAVMarkedBackground" backgroundColorMarkedSelected="FAVMarked" backgroundColorSelected="MenuSelected"
@@ -199,23 +522,7 @@
 	<screen name="SimpleChannelSelection" title="Channel Selection" position="fill" flags="wfNoBorder">
 		<panel name="SlimChannelSelection" />
 	</screen>
-
-<!-- Channel selection - Radio -->
-
-	<screen name="ChannelSelectionRadio" title="Channel Selection" position="fill" flags="wfNoBorder">
-		<panel name="ScreenTemplate" />
-		<!--
-		<ePixmap pixmap="buttons/button_200x60_red.png" position="90,500" size="200,60" alphatest="blend" zPosition="2" />
-		<ePixmap pixmap="buttons/button_200x60_green.png" position="290,500" size="200,60" alphatest="blend" zPosition="2" />
-		<ePixmap pixmap="buttons/button_200x60_yellow.png" position="490,500" size="200,60" alphatest="blend" zPosition="2" />
-		<ePixmap pixmap="buttons/button_200x60_blue.png" position="690,500" size="200,60" alphatest="blend" zPosition="2" />
-		<widget name="key_red" position="90,500" size="200,36" backgroundColor="KeyRed" font="Regular;20" halign="center" transparent="1" valign="center" zPosition="3" />
-		<widget name="key_green" position="290,500" size="200,36" backgroundColor="KeyGreen" font="Regular;20" halign="center" transparent="1" valign="center" zPosition="3" />
-		<widget name="key_yellow" position="490,500" size="200,36" backgroundColor="KeyYellow" font="Regular;20" halign="center" transparent="1" valign="center" zPosition="3" />
-		<widget name="key_blue" position="690,500" size="200,36" backgroundColor="KeyBlue" font="Regular;20" halign="center" transparent="1" valign="center" zPosition="3" />
-		-->
-		<widget name="list" position="400,80" size="830,550" backgroundColor="MenuBackground" backgroundColorSelected="MenuSelected" foregroundColor="MenuText" foregroundColorSelected="MenuTextSelected" />
-	</screen>
+	-->
 
 <!-- HbbTV -->
 
